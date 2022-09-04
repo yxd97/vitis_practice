@@ -41,3 +41,4 @@
 *.log
 *.csv
 emconfig.json
+.run
