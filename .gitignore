@@ -43,3 +43,4 @@
 emconfig.json
 .run
 .ipcache
+*_host
