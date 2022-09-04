@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+# VScode config
+.vscode
+
+# vitis temporary files
+*build.*
+*build_output.*
+.Xil
+*.log
+*.csv
+emconfig.json
