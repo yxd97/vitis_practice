@@ -85,7 +85,7 @@ int main(int argc, char** argv) {
         [](){return rand() % 10;}
     );
     for (size_t i = 0; i < out_ref.size(); i++) {
-        out_ref[i] = in1[i] + in2[1];
+        out_ref[i] = in1[i] + in2[i];
     }
 
     // create buffers
