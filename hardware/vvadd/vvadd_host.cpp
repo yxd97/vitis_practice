@@ -64,11 +64,22 @@ int main(int argc, char** argv) {
     }
 
     // setup runtime
-    RunTime rt(
+    //RunTime rt(
+    //     u280::name,
+    //     xclbin_path,
+    //     {"vvadd"}
+    // );
+    RunTime rt;
+    rt.program_device(
         u280::name,
-        xclbin_path,
-        {"vvadd"}
+        u280::board_xsa,
+        xclbin_path
     );
+
+
+    std::unordered_map<std::string, int> map{{"in1", 0}, {"in2", 1}, {"out", 2}, {"DATA_SIZE", 3}};
+    std::vector<std::unordered_map<std::string, int>> kernel_arg_map(1, map);
+    rt.create_kernels({"vvadd"}, kernel_arg_map);
 
     // generate inputs/outputs
     aligned_vector<int> in1(DATA_SIZE);
