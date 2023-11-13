@@ -63,12 +63,6 @@ int main(int argc, char** argv) {
         setenv("XCL_EMULATION_MODE", "hw_emu", true);
     }
 
-    // setup runtime
-    //RunTime rt(
-    //     u280::name,
-    //     xclbin_path,
-    //     {"vvadd"}
-    // );
     RunTime rt;
     rt.program_device(
         alveo::u280::name,
