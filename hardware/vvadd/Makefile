@@ -97,7 +97,7 @@ ifeq ($(TARGET),$(filter $(TARGET),sw_emu hw_emu))
 	$(CP) $(EMCONFIG_DIR)/emconfig.json .
 	XCL_EMULATION_MODE=$(TARGET) ./$(EXECUTABLE) $(BINARY_CONTAINERS)
 else
-	./$(EXECUTABLE) $(BUILD_DIR)/kernels.xclbin
+	./$(EXECUTABLE) $(BUILD_DIR)/vvadd.xclbin
 endif
 
 # Cleaning stuff

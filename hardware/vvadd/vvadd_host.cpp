@@ -71,8 +71,8 @@ int main(int argc, char** argv) {
     // );
     RunTime rt;
     rt.program_device(
-        u280::name,
-        u280::board_xsa,
+        alveo::u280::name,
+        alveo::u280::board_xsa,
         xclbin_path
     );
 
@@ -101,13 +101,13 @@ int main(int argc, char** argv) {
 
     // create buffers
     rt.create_buffer(
-        "in1", in1.data(), sizeof(int) * DATA_SIZE, BufferType::ReadOnly, u280::HBM[0]
+        "in1", in1.data(), sizeof(int) * DATA_SIZE, BufferType::ReadOnly, alveo::u280::HBM[0]
     );
     rt.create_buffer(
-        "in2", in2.data(), sizeof(int) * DATA_SIZE, BufferType::ReadOnly, u280::HBM[1]
+        "in2", in2.data(), sizeof(int) * DATA_SIZE, BufferType::ReadOnly, alveo::u280::HBM[1]
     );
     rt.create_buffer(
-        "out", out.data(), sizeof(int) * DATA_SIZE, BufferType::WriteOnly, u280::HBM[2]
+        "out", out.data(), sizeof(int) * DATA_SIZE, BufferType::WriteOnly, alveo::u280::HBM[2]
     );
 
     // migrate data

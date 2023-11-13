@@ -3,7 +3,7 @@
 
 #include "xcl2/xcl2.hpp"
 
-// namespace alveo {
+namespace alveo {
 
 #define CHANNEL_NAME(n) n | XCL_MEM_TOPOLOGY
 
@@ -25,6 +25,6 @@ namespace u280 {
     const int DDR[2] = {CHANNEL_NAME(32), CHANNEL_NAME(33)};
 };
 
-// } // namespace alveo
+} // namespace alveo
 
 #endif //LIBHOST_DEVICES_H
