@@ -63,12 +63,17 @@ int main(int argc, char** argv) {
         setenv("XCL_EMULATION_MODE", "hw_emu", true);
     }
 
-    // setup runtime
-    RunTime rt(
-        u280::name,
-        xclbin_path,
-        {"vvadd"}
+    RunTime rt;
+    rt.program_device(
+        alveo::u280::name,
+        alveo::u280::board_xsa,
+        xclbin_path
     );
+
+
+    std::unordered_map<std::string, int> map{{"in1", 0}, {"in2", 1}, {"out", 2}, {"DATA_SIZE", 3}};
+    std::vector<std::unordered_map<std::string, int>> kernel_arg_map(1, map);
+    rt.create_kernels({"vvadd"}, kernel_arg_map);
 
     // generate inputs/outputs
     aligned_vector<int> in1(DATA_SIZE);
@@ -90,13 +95,13 @@ int main(int argc, char** argv) {
 
     // create buffers
     rt.create_buffer(
-        "in1", in1.data(), sizeof(int) * DATA_SIZE, BufferType::ReadOnly, u280::HBM[0]
+        "in1", in1.data(), sizeof(int) * DATA_SIZE, BufferType::ReadOnly, alveo::u280::HBM[0]
     );
     rt.create_buffer(
-        "in2", in2.data(), sizeof(int) * DATA_SIZE, BufferType::ReadOnly, u280::HBM[1]
+        "in2", in2.data(), sizeof(int) * DATA_SIZE, BufferType::ReadOnly, alveo::u280::HBM[1]
     );
     rt.create_buffer(
-        "out", out.data(), sizeof(int) * DATA_SIZE, BufferType::WriteOnly, u280::HBM[2]
+        "out", out.data(), sizeof(int) * DATA_SIZE, BufferType::WriteOnly, alveo::u280::HBM[2]
     );
 
     // migrate data
